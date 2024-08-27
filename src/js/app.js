@@ -10,13 +10,12 @@ const mostrarLista=document.querySelector(".nav-item-card-list");
 function showHiddenList(e){
     e.preventDefault();
     e.stopPropagation();
-    console.log("hola")
+    console.log("remove class")
          if(mostrarLista.classList.contains("nav-item-card-list")){
-            mostrarLista.classList.add("show-card");
-            //mostrarLista.classList.remove("hidden-card");
+            mostrarLista.classList.remove("nav-item-card-list");
             
         }else{
-            //mostrarLista.classList.remove("show-card");
-            mostrarLista.classList.add("hidden-card");
+           mostrarLista.classList.add("nav-item-card-list");
+           console.log("add class")
 }
 }
