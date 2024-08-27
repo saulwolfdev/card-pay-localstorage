@@ -6,12 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Review</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   <link rel="stylesheet" href="sass/sass.css">
 </head>
 
-<body>
+<body class="wrapper">
 
-<h3>Cards</h3>
+<nav class="nav">
+  <div class="nav-item">Logo</div>
+  <div class="nav-item-card">
+    mis favoritos
+    <i class="nav-item-icon" data-feather="shopping-cart"></i>
+    <div class="nav-item-card-list">
+      <div class="nav-item-card-list-items">
+        Carrito
+      </div>
+      <button class="nav-item-card-list-clear">Limpiar Carrito</button> 
+    </div>
+  </div>
+
+</nav>
+
+<h1 clas>Cards</h1>
 <div class="card">
 <div class="card-item">
   <img src="./img/crown.jpg" alt="" class="card-item-img">

@@ -1,3 +1,8 @@
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .card {
   display: flex;
   justify-content: center;
@@ -37,4 +42,31 @@
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 400;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #84b6ff;
+}
+
+.nav-item-card-list {
+  padding: 24px;
+  border: 1px solid #888888;
+  position: absolute;
+  top: 78px;
+  right: 371px;
+  background-color: white;
+  border-radius: 8px;
+  display: none;
+}
+
+.show-card {
+  display: block;
+}
+
+.hidden-card {
+  display: none;
 }
