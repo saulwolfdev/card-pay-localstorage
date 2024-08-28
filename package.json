@@ -5,7 +5,8 @@
   "main": "tailwind.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/js/app.js"
+    "start": "nodemon src/js/app.js",
+    "live":"live-server src/index-html"
   },
   "keywords": [],
   "author": "",
