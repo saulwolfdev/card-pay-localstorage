@@ -39,12 +39,17 @@
 }
 
 .card-item-button {
-  background-color: red;
+  background-color: rebeccapurple;
   border-radius: 8px;
   color: white;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 400;
+  cursor: pointer;
+}
+
+.card-item-button:hover {
+  background-color: red;
 }
 
 .nav {
@@ -80,7 +85,7 @@
   display: none;
 }
 
-.nav-item-card-list--dynamic {
+.nav-item-card-list-content {
   padding: 24px;
   border: 1px solid #888888;
   position: absolute;
@@ -88,4 +93,17 @@
   right: 371px;
   background-color: white;
   border-radius: 8px;
+}
+
+.nav-item-card-list-content--dynamic {
+  border-bottom: 1px solid gray;
+  margin: 8px 8px;
+}
+
+.nav-item-card-list-content-clear {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #ffcbcb;
+  width: 100%;
 }

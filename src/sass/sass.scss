@@ -32,12 +32,16 @@
             font-size: 16px
         }
         &-button{
-            background-color: red;
+            background-color: rebeccapurple;
             border-radius: 8px;
             color:white;
             padding: 8px 16px;
             font-size: 14px;
             font-weight: 400;
+            cursor: pointer;
+            &:hover{
+                background-color: red;
+            }
         }
         
     }
@@ -70,7 +74,7 @@
         }
         &-list{
             display: none;
-            &--dynamic{
+            &-content{
                 padding: 24px;
                 border: 1px solid #888888;
                 position: absolute;
@@ -78,7 +82,20 @@
                 right: 371px;
                 background-color: white;
                 border-radius: 8px;
+                &--dynamic{
+                  border-bottom: 1px solid gray;
+                  margin: 8px 8px;
+                }
+                &-clear{
+                    cursor: pointer;
+                    padding: 8px 16px;
+                    border-radius: 8px;
+                    background-color: #ffcbcb;
+                    width: 100%;
+                }
             }
+
+
         }
     }
 }
