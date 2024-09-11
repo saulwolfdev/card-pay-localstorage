@@ -2,12 +2,13 @@
 feather.replace()
 
 //contenedor Menu
-const mostrarCarrito=document.querySelector(".nav-item-card")
-      mostrarCarrito.addEventListener("click",showHiddenList);
-
+const mostrarCarrito=document.querySelector(".nav-item-card");
+     
+//carrito
 const mostrarLista=document.querySelector(".nav-item-card-list");
 const mostrarListaSeleccionada=document.querySelector(".nav-item-card-list-content--dynamic");
-const limpiarCarrito=document.querySelector(".nav-item-card-list-clear");
+const limpiarCarrito=document.querySelector(".nav-item-card-list-content-clear");
+const eliminarCarrito=document.querySelector(".nav-item-card-list-content");
 
 let articulosCarrito=[];
 
@@ -18,8 +19,14 @@ const agregarElementoCarrito=document.querySelector(".card");
 cargarRegistrarEventos();
 
 function cargarRegistrarEventos(){
+    mostrarCarrito.addEventListener("click",showHiddenList);
     agregarElementoCarrito.addEventListener("click",agregarCarritoProducto);
-   
+    eliminarCarrito.addEventListener("click",eliminarProductosCarrito);
+    //vaciando carrito con funcion anonima
+    limpiarCarrito.addEventListener("click",()=>{
+        articulosCarrito=[];
+        limpiarHTML();
+    });
 } 
 
 function agregarCarritoProducto(e){
@@ -27,6 +34,19 @@ function agregarCarritoProducto(e){
     if(e.target.classList.contains("card-item-button")){
         const elementoSeleccionado=e.target.parentElement;
         leerDatosSeleccionados(elementoSeleccionado);
+    }
+}
+//Elimina elementos del carrito
+
+function eliminarProductosCarrito(e){
+    console.log("verificando elminar",e.target.classList)
+    if(e.target.classList.contains("nav-item-card-list-content--dynamic-cards-link")){
+
+        const productosId=e.target.getAttribute("data-id");
+        //console.log("producto ID seleccion",productosId)
+        articulosCarrito=articulosCarrito.filter(elementoSeleccionado=>elementoSeleccionado.idElemento!==productosId);
+        console.log("Verificando si sie elimina correcto",articulosCarrito);
+        carritoHTML();
     }
 }
 
@@ -40,11 +60,29 @@ function leerDatosSeleccionados(elementoSeleccionado){
         idElemento:elementoSeleccionado.querySelector("button").getAttribute("data-id"),
         cantidad:1
    }
-   //console.log("Creacion de Objeto Seleccionado",creacionDeELemento)
+   //revisa si un elemento existe el carrito
+
+   const revisaProductoExiste=articulosCarrito.some(elementoSeleccionado=>elementoSeleccionado.idElemento===creacionDeELemento.idElemento);
+   //console.log("existe",revisaProductoExiste)
+   if(revisaProductoExiste){
+    const productosEnCarrito=articulosCarrito.map(elementoSeleccionado=>{
+        if(elementoSeleccionado.idElemento==creacionDeELemento.idElemento){
+            elementoSeleccionado.cantidad++;
+            //este return el objeto actualizado
+            return elementoSeleccionado;
+        }else{
+            //este retunr los objetos que nos son duplicados
+            return elementoSeleccionado;
+        }
+    })
+    articulosCarrito=[...productosEnCarrito]
+   }else{
+    console.log("Creacion de Objeto Seleccionado",creacionDeELemento)
    //Agrego elementos al carrito
    articulosCarrito=[...articulosCarrito,creacionDeELemento];
+        }
 
-console.log("LLENNANDO",articulosCarrito)
+console.log("Llenando carrito",articulosCarrito)
 
 carritoHTML();
 }
@@ -55,12 +93,13 @@ carritoHTML();
 
     articulosCarrito.forEach(articulo=>{
         const div=document.createElement("div")
-              div.classList.add("nav-item-card-list-items")
+              div.classList.add("nav-item-card-list-content--dynamic-cards")
               div.innerHTML=`
               <img src="${articulo.imagen}" width="100"/>
               <h3>${articulo.titulo}</h3>
               <p>${articulo.parrafo}</p>
-              <a href="#" class="delete" data-id="${articulo.idElemento}">X</a>
+              <span>${articulo.cantidad}</span>
+              <a href="#" class="nav-item-card-list-content--dynamic-cards-link" data-id="${articulo.idElemento}">X</a>
               `;
               mostrarListaSeleccionada.appendChild(div)
     });

@@ -59,10 +59,14 @@
     &-item-card{
         padding: 14px;
         cursor: pointer;
+        box-shadow: 0 0 0 0 #fff;
+        box-sizing: border-box;
             &:hover{
                 background-color: #e6e6e6;
                 padding: 14px;
                 border-radius: 8px;
+                box-shadow: 0 0 0 0 #fff;
+                cursor: pointer;
             }
         &-shopping{
             display: flex;
@@ -82,10 +86,41 @@
                 right: 371px;
                 background-color: white;
                 border-radius: 8px;
+
                 &--dynamic{
                   border-bottom: 1px solid gray;
                   margin: 8px 8px;
+                    &-cards{
+                        display: flex;
+                        align-items: center;
+
+                        &-img{
+                        display: block;
+                        padding-right: 10px;
+                        }
+                        &-title{
+
+                        }
+                        &-paragraph{
+
+                        }
+                        &-count{
+
+                        }
+                        &-link{
+                            padding: 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 20px;
+                            font-size: 14px;
+                            background-color: red;
+                        }
+                    }
                 }
+
                 &-clear{
                     cursor: pointer;
                     padding: 8px 16px;
