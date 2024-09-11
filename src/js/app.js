@@ -29,6 +29,8 @@ function cargarRegistrarEventos(){
     });
 } 
 
+
+//Agregar los elementos al dom
 function agregarCarritoProducto(e){
     e.preventDefault()
     if(e.target.classList.contains("card-item-button")){
@@ -36,20 +38,8 @@ function agregarCarritoProducto(e){
         leerDatosSeleccionados(elementoSeleccionado);
     }
 }
-//Elimina elementos del carrito
 
-function eliminarProductosCarrito(e){
-    console.log("verificando elminar",e.target.classList)
-    if(e.target.classList.contains("nav-item-card-list-content--dynamic-cards-link")){
-
-        const productosId=e.target.getAttribute("data-id");
-        //console.log("producto ID seleccion",productosId)
-        articulosCarrito=articulosCarrito.filter(elementoSeleccionado=>elementoSeleccionado.idElemento!==productosId);
-        console.log("Verificando si sie elimina correcto",articulosCarrito);
-        carritoHTML();
-    }
-}
-
+//Leer y seleccionar Elementos del Dom
 function leerDatosSeleccionados(elementoSeleccionado){
    //console.log("CLICK U TOMA DE HTML",elementoSeleccionado)
 
@@ -86,7 +76,7 @@ console.log("Llenando carrito",articulosCarrito)
 
 carritoHTML();
 }
-
+// Seleccion y creacion de elementos en el Carrito DOM
  function carritoHTML(){
 
     limpiarHTML();
@@ -105,24 +95,26 @@ carritoHTML();
     });
  }
 
+ 
+//Elimina elementos del carrito
+function eliminarProductosCarrito(e){
+    console.log("verificando elminar",e.target.classList)
+    if(e.target.classList.contains("nav-item-card-list-content--dynamic-cards-link")){
+
+        const productosId=e.target.getAttribute("data-id");
+        //console.log("producto ID seleccion",productosId)
+        articulosCarrito=articulosCarrito.filter(elementoSeleccionado=>elementoSeleccionado.idElemento!==productosId);
+        console.log("Verificando si sie elimina correcto",articulosCarrito);
+        carritoHTML();
+    }
+}
+// Limpiar carrito
 function limpiarHTML(){
     while(mostrarListaSeleccionada.firstChild){
         mostrarListaSeleccionada.removeChild(mostrarListaSeleccionada.firstChild)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Mostrar o ocultar Carrito
 function showHiddenList(e){
     e.preventDefault();
     e.stopPropagation();
